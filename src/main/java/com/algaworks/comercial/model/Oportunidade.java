@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -30,6 +32,11 @@ public class Oportunidade implements Serializable {
 	
 	@Min(0)
 	private BigDecimal valor;
+	
+	@ManyToOne
+	@JoinColumn(name = "empresa_id")
+	private Empresa empresa;
+	
 	public Long getId() {
 		return id;
 	}
